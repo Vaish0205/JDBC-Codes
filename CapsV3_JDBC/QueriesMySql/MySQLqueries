@@ -1,0 +1,48 @@
+Enter password: root
+
+//Database creation
+						create database capsv3_db;
+
+//change database
+						use capsv3_db;
+
+//table creation
+						create table Students_info(
+						sid int,
+						firstname varchar(50),
+						lastname varchar(50),
+						isadmin varchar(1),
+						password varchar(10),
+						primary key(sid)
+						);
+
+//values insertion
+						insert into Students_info values(1,"Vaishnavi","Nagaraj",'Y',"root");
+
+//stored procedure
+						delimiter &					
+						create procedure getAllStudents()
+						begin
+							select* from students_info;
+						end &
+						
+						delimiter ;
+						
+						
+						delimiter &
+						create procedure getStudentsInfo(IN in_regno int)
+						begin
+							select * from students_info
+							where sid=in_regno;
+						end &
+						
+						delimiter ;
+
+//viewing procedure
+						show procedure status like 'procedure_name';
+
+//all procedures
+						show procedure status;
+
+//dropping the procedure
+						drop procedure if exists procedure_name;
